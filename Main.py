@@ -27,4 +27,28 @@ print("* Answer each question with the corresponding number.")
 print("* A, B, C, D, a, b, c, and d will not work")
 print("* That is it... it's pretty simple.")
 
+#cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
+def answerSelect(answer):
+    global gryffindor
+    global slytherin
+    global ravenclaw
+    global hufflepuff
+    if answer == 1:
+        gryffindor = gryffindor + 1
+    elif answer == 2:
+        slytherin = slytherin + 1
+    elif answer == 3:
+        ravenclaw = ravenclaw + 1
+    elif answer == 4:
+        hufflepuff = hufflepuff + 1
+    else:
+        print("Invalid Input")
 
+#Question 1
+print("Question 1: \nTest")
+answerSelect(int(input()))
+print("Gryffindor:", gryffindor)
+print("Slytherin:", slytherin)
+print("Ravenclaw:", ravenclaw)
+print("Hufflepuff:", hufflepuff)
