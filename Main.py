@@ -24,6 +24,27 @@ def answerSelect(answer):
     elif answer == 4:
         hufflepuff = hufflepuff + 1
 
+def questionInput(question):
+    # While loop checks if valid input.
+    while True:
+        try:
+            print(question)
+            ans = int(input())
+            answerSelect(ans)
+
+            if ans > 4 or ans < 1:
+                print("Invalid Input. Try Again.")
+                continue
+
+            break
+
+        except ValueError:
+            print("Invalid Input. Try Again.")
+
+        except:
+            print("Unforeseen Error Occurred. Try Again. ")
+    # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
+    # # This tutorial taught me how to use a while loop to check for proper input
 
 # cite: http://www.newthinktank.com/2016/07/learn-program-5/
 # # This tutorial taught me how to use functions in python
@@ -39,26 +60,7 @@ print("* A, B, C, D, a, b, c, and d will not work")
 print("* That is it... it's pretty simple.")
 
 # Question 1
-# While loop checks if valid input.
-while True:
-    try:
-        print("Question 1: \nTest")
-        ans = int(input())
-        answerSelect(ans)
-
-        if ans > 4 or ans < 1:
-            print("Invalid Input. Try Again.")
-            continue
-
-        break
-
-    except ValueError:
-        print("Invalid Input. Try Again.")
-
-    except:
-        print("Unforeseen Error Occurred. Try Again. ")
-# Cite: http://www.newthinktank.com/2016/06/learn-program-3/
-# # This tutorial taught me how to use a while loop to check for proper input
+questionInput("Testing 123\nFudge")
 
 # Testing
 print("Gryffindor:", gryffindor)
@@ -73,4 +75,3 @@ percentGryff = gryffindor / totalScore * 100
 percentSlyth = slytherin / totalScore * 100
 percentRaven = ravenclaw / totalScore * 100
 percentHuffle = hufflepuff / totalScore * 100
-
