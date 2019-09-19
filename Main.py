@@ -27,8 +27,7 @@ print("* Answer each question with the corresponding number.")
 print("* A, B, C, D, a, b, c, and d will not work")
 print("* That is it... it's pretty simple.")
 
-#cite: http://www.newthinktank.com/2016/07/learn-program-5/
-# # This tutorial taught me how to use functions in python
+#This function takes the users input and converts adds to the corresponding house's score
 def answerSelect(answer):
     global gryffindor
     global slytherin
@@ -42,12 +41,27 @@ def answerSelect(answer):
         ravenclaw = ravenclaw + 1
     elif answer == 4:
         hufflepuff = hufflepuff + 1
-    else:
-        print("Invalid Input")
+    
+#cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
 
 #Question 1
-print("Question 1: \nTest")
-answerSelect(int(input()))
+#While loop checks if valid input.
+while True:
+    try:
+        print("Question 1: \nTest")
+        ans = int(input())
+        answerSelect(ans)
+        if ans > 4 or ans < 1:
+            print("Invalid Input. Try Again.")
+            continue
+        break
+    except ValueError:
+        print("Invalid Input. Try Again.")
+    except:
+        print("Unforeseen Error Occurred. Try Again. ")
+#Cite: http://www.newthinktank.com/2016/06/learn-program-3/
+# # This tutorial taught me how to use a while loop to check for proper input
 print("Gryffindor:", gryffindor)
 print("Slytherin:", slytherin)
 print("Ravenclaw:", ravenclaw)
