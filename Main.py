@@ -134,6 +134,7 @@ while q != 0:
 
         print("\nTie Breaker Question:\nWhich house do you want to be in?\n   1. Gryffindor\n   2. Slytherin\n   3. "
               "Ravenclaw\n   4. Hufflepuff")
+
         questionInput()
         print()
 
@@ -159,6 +160,8 @@ resultsDict = {"Gryffindor: ": percentGryff,
                "Slytherin:  ": percentSlyth,
                "Ravenclaw:  ": percentRaven,
                "Hufflepuff: ": percentHuffle}
+
 print("\nFinal Results:")
+
 for x, y in resultsDict.items():
     print(x, "{:,.2f}%".format(y))
