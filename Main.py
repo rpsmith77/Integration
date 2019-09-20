@@ -30,13 +30,13 @@ def answerSelect(answer):
     global ravenclaw
     global hufflepuff
     if answer == 1:
-        gryffindor = gryffindor + 1
+        gryffindor += 1
     elif answer == 2:
-        slytherin = slytherin + 1
+        slytherin += 1
     elif answer == 3:
-        ravenclaw = ravenclaw + 1
+        ravenclaw += 1
     elif answer == 4:
-        hufflepuff = hufflepuff + 1
+        hufflepuff += 1
 
 
 
