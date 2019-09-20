@@ -20,26 +20,6 @@ slytherin = 0
 ravenclaw = 0
 hufflepuff = 0
 
-
-# This function takes the users input and converts adds to the corresponding house's score
-# cite: http://www.newthinktank.com/2016/07/learn-program-5/
-# # This tutorial taught me how to use functions in python
-def answerSelect(answer):
-    global gryffindor
-    global slytherin
-    global ravenclaw
-    global hufflepuff
-    if answer == 1:
-        gryffindor += 1
-    elif answer == 2:
-        slytherin += 1
-    elif answer == 3:
-        ravenclaw += 1
-    elif answer == 4:
-        hufflepuff += 1
-
-
-
 # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
 # # This tutorial taught me how to use a while loop to check for proper input
 def questionInput():
@@ -72,7 +52,22 @@ def questionInput():
         except ValueError:
             print("Invalid Input. Try Again.")
 
-
+# This function takes the users input and converts adds to the corresponding house's score
+# cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
+def answerSelect(answer):
+    global gryffindor
+    global slytherin
+    global ravenclaw
+    global hufflepuff
+    if answer == 1:
+        gryffindor += 1
+    elif answer == 2:
+        slytherin += 1
+    elif answer == 3:
+        ravenclaw += 1
+    elif answer == 4:
+        hufflepuff += 1
 
 # Intro/Instructions
 for i in intro:
