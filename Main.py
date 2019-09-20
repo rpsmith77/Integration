@@ -20,6 +20,7 @@ slytherin = 0
 ravenclaw = 0
 hufflepuff = 0
 
+
 # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
 # # This tutorial taught me how to use a while loop to check for proper input
 def questionInput():
@@ -52,6 +53,7 @@ def questionInput():
         except ValueError:
             print("Invalid Input. Try Again.")
 
+
 # This function takes the users input and converts adds to the corresponding house's score
 # cite: http://www.newthinktank.com/2016/07/learn-program-5/
 # # This tutorial taught me how to use functions in python
@@ -68,6 +70,7 @@ def answerSelect(answer):
         ravenclaw += 1
     elif answer == 4:
         hufflepuff += 1
+
 
 # Intro/Instructions
 for i in intro:
@@ -101,8 +104,9 @@ checkSort = sorted(checkUnsort, reverse=True)
 # If there is a tie it will ask a tie breaker question until there is no longer a tie.
 q = 1
 while q != 0:
-    if checkSort[0] != checkSort[1]:
-        if checkUnsort[0] == checkSort[0]:
+    if checkSort[0] != checkSort[1]:  # Checks if there is a tie
+
+        if checkUnsort[0] == checkSort[0]:  # Checks which house by comparing sorted results to non sorted results
             print("You got Gryffindor!\n")
             print(houseDescList[0])
         elif checkUnsort[1] == checkSort[0]:
@@ -114,9 +118,11 @@ while q != 0:
         else:
             print("You got Hufflepuff!\n")
             print(houseDescList[3])
-        break
+
+        break  # With out this break the House Description would just infinitely print
+
     elif checkSort[0] == checkSort[1]:
-        resultsDict = {"Gryffindor: ": percentGryff,
+        resultsDict = {"Gryffindor: ": percentGryff,  # Shows the results to the user so they know which houses are tied
                        "Slytherin:  ": percentSlyth,
                        "Ravenclaw:  ": percentRaven,
                        "Hufflepuff: ": percentHuffle}
@@ -126,8 +132,8 @@ while q != 0:
         for x, y in resultsDict.items():
             print(x, "{:,.2f}%".format(y))
 
-        print(
-            "\nTie Breaker Question:\nWhich house do you want to be in?\n   1. Gryffindor\n   2. Slytherin\n   3. Ravenclaw\n   4. Hufflepuff")
+        print("\nTie Breaker Question:\nWhich house do you want to be in?\n   1. Gryffindor\n   2. Slytherin\n   3. "
+              "Ravenclaw\n   4. Hufflepuff")
         questionInput()
 
         totalScore = gryffindor + slytherin + ravenclaw + hufflepuff
@@ -138,7 +144,8 @@ while q != 0:
 
         checkUnsort = [percentGryff, percentSlyth, percentRaven, percentHuffle]
         checkSort = sorted(checkUnsort, reverse=True)
-        continue
+
+        continue  # If their is a tie this will loop the tiebreaker question until there is no tie
 q = 0
 
 # # Testing
