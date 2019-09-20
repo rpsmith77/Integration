@@ -2,7 +2,16 @@
 
 # Harry Potter Sorting Hat Quiz
 
-# declaring house type variables
+
+# Takes questions from external .txt file and stores it in a list
+# Cite: https://qiita.com/visualskyrim/items/1922429a07ca5f974467
+# # That url showed me how to import the .txt file without \n at the end of each line
+questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
+
+# The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
+houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
+
+# declaring house variables
 gryffindor = 0
 slytherin = 0
 ravenclaw = 0
@@ -24,14 +33,19 @@ def answerSelect(answer):
     elif answer == 4:
         hufflepuff = hufflepuff + 1
 
-def questionInput(question):
+
+# cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
+
+def questionInput():
     # While loop checks if valid input.
     while True:
         try:
-            print(question)
             ans = input()
-
-            if (65 <= ord(ans) <= 68) or (97 <= ord(ans) <= 100):
+            if len(ans) != 1:
+                print("Invalid Input. Try Again.")
+                continue
+            elif (65 <= ord(ans) <= 68) or (97 <= ord(ans) <= 100):
                 if ans == "A" or ans == "a":
                     ans = 1
                 elif ans == "B" or ans == "b":
@@ -58,41 +72,94 @@ def questionInput(question):
     # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
     # # This tutorial taught me how to use a while loop to check for proper input
 
-# cite: http://www.newthinktank.com/2016/07/learn-program-5/
-# # This tutorial taught me how to use functions in python
 
 # Intro/Instructions
 print("Welcome Witches and Wizards!")
 print("This Quiz will tell you which Hogwarts house you belong in.")
-print("It will tell you your next closest matching house, and the percentage you are of each house.")
+print("It will also tell you your score for the other three houses.")
 print()
 print("-----INSTRUCTIONS-----")
 print("* Answer each question with the corresponding number.\n    *A, B, C, and D will also work")
 print("* Answer as truthfully as possible.")
-print("* Have fun!")
+print("* Have fun!\n")
 
-# Question 1
-questionInput("Testing 123\nFudge")
+for i in range(0, len(questionList)):
+    print(questionList[i])
+    if i % 5 == 0 and i != 0:
+        questionInput()
+        print()
 
-# Testing
-print("Gryffindor:", gryffindor)
-print("Slytherin:", slytherin)
-print("Ravenclaw:", ravenclaw)
-print("Hufflepuff:", hufflepuff)
+# # Testing
+# print("Gryffindor:", gryffindor)
+# print("Slytherin:", slytherin)
+# print("Ravenclaw:", ravenclaw)
+# print("Hufflepuff:", hufflepuff)
 
-# calculate which house you are in
+# Calculate the users percentage in each house
 totalScore = gryffindor + slytherin + ravenclaw + hufflepuff
-
 percentGryff = gryffindor / totalScore * 100
 percentSlyth = slytherin / totalScore * 100
 percentRaven = ravenclaw / totalScore * 100
 percentHuffle = hufflepuff / totalScore * 100
 
-resultsDict = {"Gryffindor: ": (gryffindor / totalScore * 100),
-               "Slytherin:  ": (slytherin / totalScore * 100),
-               "Ravenclaw:  ": (ravenclaw / totalScore * 100),
-               "Hufflepuff: ": (hufflepuff / totalScore * 100)}
+# used in below while loop to see what percentage in each house is largest for the user
+checkUnsort = [percentGryff, percentSlyth, percentRaven, percentHuffle]
+checkSort = sorted(checkUnsort, reverse=True)
 
-for i in resultsDict:
-    print(i, end="")
-    print(resultsDict[i])
+# This While Loop checks to see which house the user belongs in. It also checks to see if there is a tie.
+# If there is a tie it will ask a tie breaker question until there is no longer a tie.
+q = 1
+while q != 0:
+    if checkSort[0] != checkSort[1]:
+        if checkUnsort[0] == checkSort[0]:
+            print("You got Gryffindor!\n")
+            print(houseDescList[0])
+        elif checkUnsort[1] == checkSort[0]:
+            print("You got Slytherin!\n")
+            print(houseDescList[1])
+        elif checkUnsort[2] == checkSort[0]:
+            print("You got Ravenclaw!\n")
+            print(houseDescList[2])
+        else:
+            print("You got Hufflepuff!\n")
+            print(houseDescList[3])
+        break
+    elif checkSort[0] == checkSort[1]:
+        resultsDict = {"Gryffindor: ": percentGryff,
+                       "Slytherin:  ": percentSlyth,
+                       "Ravenclaw:  ": percentRaven,
+                       "Hufflepuff: ": percentHuffle}
+
+        print("\nResults:")
+
+        for x, y in resultsDict.items():
+            print(x, "{:,.2f}%".format(y))
+
+        print(
+            "\nTie Breaker Question:\nWhich house do you want to be in?\n   1. Gryffindor\n   2. Slytherin\n   3. Ravenclaw\n   4. Hufflepuff")
+        questionInput()
+
+        totalScore = gryffindor + slytherin + ravenclaw + hufflepuff
+        percentGryff = gryffindor / totalScore * 100
+        percentSlyth = slytherin / totalScore * 100
+        percentRaven = ravenclaw / totalScore * 100
+        percentHuffle = hufflepuff / totalScore * 100
+
+        checkUnsort = [percentGryff, percentSlyth, percentRaven, percentHuffle]
+        checkSort = sorted(checkUnsort, reverse=True)
+        continue
+q = 0
+
+# # Testing
+# print("Gryffindor:", gryffindor)
+# print("Slytherin:", slytherin)
+# print("Ravenclaw:", ravenclaw)
+# print("Hufflepuff:", hufflepuff)
+
+resultsDict = {"Gryffindor: ": percentGryff,
+               "Slytherin:  ": percentSlyth,
+               "Ravenclaw:  ": percentRaven,
+               "Hufflepuff: ": percentHuffle}
+print("\nFinal Results:")
+for x, y in resultsDict.items():
+    print(x, "{:,.2f}%".format(y))
