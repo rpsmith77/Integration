@@ -135,6 +135,7 @@ while q != 0:
         print("\nTie Breaker Question:\nWhich house do you want to be in?\n   1. Gryffindor\n   2. Slytherin\n   3. "
               "Ravenclaw\n   4. Hufflepuff")
         questionInput()
+        print()
 
         totalScore = gryffindor + slytherin + ravenclaw + hufflepuff
         percentGryff = gryffindor / totalScore * 100
