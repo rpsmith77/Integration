@@ -11,6 +11,9 @@ questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
 # The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
 houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
 
+# Contains Intro and Instructions
+intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
+
 # declaring house variables
 gryffindor = 0
 slytherin = 0
@@ -19,6 +22,8 @@ hufflepuff = 0
 
 
 # This function takes the users input and converts adds to the corresponding house's score
+# cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
 def answerSelect(answer):
     global gryffindor
     global slytherin
@@ -34,33 +39,30 @@ def answerSelect(answer):
         hufflepuff = hufflepuff + 1
 
 
-# cite: http://www.newthinktank.com/2016/07/learn-program-5/
-# # This tutorial taught me how to use functions in python
 
+# Cite: http://www.newthinktank.com/2016/06/learn-program-3/
+# # This tutorial taught me how to use a while loop to check for proper input
 def questionInput():
     # While loop checks if valid input.
     while True:
         try:
             ans = input()
-            if len(ans) != 1:
+            if len(ans) != 1:  # Checks if input is multiple characters. If so it is rejected
                 print("Invalid Input. Try Again.")
                 continue
-            elif (65 <= ord(ans) <= 68) or (97 <= ord(ans) <= 100):
+            elif (65 <= ord(ans) <= 68) or (97 <= ord(ans) <= 100):  # checks if 'A' - 'D' or 'a' - 'd'
                 if ans == "A" or ans == "a":
                     ans = 1
                 elif ans == "B" or ans == "b":
                     ans = 2
                 elif ans == "C" or ans == "c":
                     ans = 3
-                elif ans == "D" or ans == "d":
-                    ans = 4
                 else:
-                    print("Invalid Input. Try Again.")
-                    continue
+                    ans = 4
 
             ans = int(ans)
 
-            if ans > 4 or ans < 1:
+            if ans > 4 or ans < 1:  # Checks for proper input
                 print("Invalid Input. Try Again.")
                 continue
 
@@ -69,23 +71,17 @@ def questionInput():
 
         except ValueError:
             print("Invalid Input. Try Again.")
-    # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
-    # # This tutorial taught me how to use a while loop to check for proper input
+
 
 
 # Intro/Instructions
-print("Welcome Witches and Wizards!")
-print("This Quiz will tell you which Hogwarts house you belong in.")
-print("It will also tell you your score for the other three houses.")
-print()
-print("-----INSTRUCTIONS-----")
-print("* Answer each question with the corresponding number.\n    *A, B, C, and D will also work")
-print("* Answer as truthfully as possible.")
-print("* Have fun!\n")
+for i in intro:
+    print(i)
 
+# Questions
 for i in range(0, len(questionList)):
     print(questionList[i])
-    if i % 5 == 0 and i != 0:
+    if i % 5 == 0 and i != 0:  # this prints out the full question before asking for the input
         questionInput()
         print()
 
