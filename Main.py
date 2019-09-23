@@ -24,13 +24,20 @@ class House:
         self.percent = percent
 
 
+# cite: http://www.newthinktank.com/2016/07/learn-program-5/
+# # This tutorial taught me how to use functions in python
 def question():
-    while True:
+    # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
+    # # This tutorial taught me how to use a while loop to check for proper input
+    while True:  # Makes sure input is valid
         try:
+
             ans = input()
+
             if len(ans) != 1:  # Checks if input is multiple characters. If so it is rejected
                 print("Invalid Input. Try Again.")
                 continue
+
             elif (65 <= ord(ans) <= 68) or (97 <= ord(ans) <= 100):  # checks if 'A' - 'D' or 'a' - 'd'
                 if ans == "A" or ans == "a":
                     return 1
@@ -53,16 +60,16 @@ def question():
             print("Invalid Input. Try Again.")
 
 
-def sorting(house1, house2, house3, house4):
+def sorting(house1, house2, house3, house4):  # Sorts you into your correct house
+
     checkUnsort = [house1, house2, house3, house4]
     checkSort = sorted(checkUnsort, reverse=True)
 
-    i = 1
-    while i != 0:
+    while True:
 
         if checkSort[0] != checkSort[1]:  # Checks if there is a tie
 
-            if checkUnsort[0] == checkSort[0]:  # comparing sorted results w/ non sorted resuts
+            if checkUnsort[0] == checkSort[0]:  # comparing sorted to unsorted to tell which house to sort user in
                 return 0
             elif checkUnsort[1] == checkSort[0]:
                 return 1
@@ -71,7 +78,7 @@ def sorting(house1, house2, house3, house4):
             else:
                 return 3
 
-        elif checkSort[0] == checkSort[1]:
+        else:
             print("You tied two for two or more houses. Choose Which House you wish to belong to!")
 
             answer = question()
@@ -84,19 +91,23 @@ def sorting(house1, house2, house3, house4):
                 return 7
             else:
                 return 8
-        continue
-    i = 0
 
 
 def main():
+    # Creates each house
     gryffindor = House("Gryffindor", 0, houseDescList[0])
     slytherin = House("Slytherin", 0, houseDescList[1])
     ravenclaw = House("Ravenclaw", 0, houseDescList[2])
     hufflepuff = House("Hufflepuff", 0, houseDescList[3])
 
-    for i in range(0, len(questionList)):
+    for i in intro:  # prints intro
+        print(i)
+
+    print()  # Formatting
+
+    for i in range(0, len(questionList)):  # Prints out the question and answer options before
         print(questionList[i])
-        if i % 5 == 0 and i != 0:  # this prints out the full question before asking for the input
+        if i % 5 == 0 and i != 0:
             answer = question()
 
             if answer == 1:
@@ -112,8 +123,8 @@ def main():
 
     while True:
         result = sorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
-        if result > 4:  # If it was tied this adds to the score
 
+        if result > 4:  # If it was tied this adds to the score
             if result == 5:
                 gryffindor.score += 1
             elif result == 6:
@@ -122,6 +133,7 @@ def main():
                 ravenclaw.score += 1
             else:
                 hufflepuff.score += 1
+
         else:
             if result == 0:
                 print("You were sorted into {}!".format(gryffindor.name), "\n", gryffindor.descript, sep="")
@@ -150,4 +162,3 @@ def main():
 
 
 main()
-

@@ -1,45 +1,45 @@
 Begin!
-q1
+Which of the following would someone most likely describe you as?
+   1. Brave
+   2. Resourceful
+   3. Smart
+   4. Kind
+?
    1.
    2.
    3.
    4.
-q2
+
    1.
    2.
    3.
    4.
-q3
+?
    1.
    2.
    3.
    4.
-q4
+?
    1.
    2.
    3.
    4.
-q5
+?
    1.
    2.
    3.
    4.
-q6
+?
    1.
    2.
    3.
    4.
-q7
+?
    1.
    2.
    3.
    4.
-q8
-   1.
-   2.
-   3.
-   4.
-q9
+?
    1.
    2.
    3.
