@@ -124,7 +124,7 @@ def main():
     while True:
         result = sorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
 
-        if result > 4:  # If it was tied this adds to the score
+        if result > 4:  # If it was tied this adds to the house's score
             if result == 5:
                 gryffindor.score += 1
             elif result == 6:
