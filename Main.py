@@ -80,6 +80,10 @@ def sorting(house1, house2, house3, house4):  # Sorts you into your correct hous
 
         else:
             print("You tied two for two or more houses. Choose Which House you wish to belong to!")
+            print("Gryffindor: {:.2f}%".format(house1/(house1 + house2 + house3 + house4)*100))
+            print("Slytherin:  {:.2f}%".format(house2/(house1 + house2 + house3 + house4)*100))
+            print("Ravenclaw:  {:.2f}%".format(house3/(house1 + house2 + house3 + house4)*100))
+            print("Hufflepuff: {:.2f}%".format(house4/(house1 + house2 + house3 + house4)*100))
 
             answer = question()
 
