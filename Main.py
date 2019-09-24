@@ -5,7 +5,7 @@
 
 # Takes questions from external .txt file and stores it in a list
 # Cite: https://qiita.com/visualskyrim/items/1922429a07ca5f974467
-# # That url showed me how to import the .txt file without \n at the end of each line
+# # That url showed me how to import the .txt file without \n at the end  of each line
 questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
 
 # The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
