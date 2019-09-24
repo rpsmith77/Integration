@@ -17,7 +17,9 @@ intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
 
 class House:
 
-    def __init__(self, name="", score=0, descript="", percent=0.0):
+    def __init__(self, name="", score=0, descript=None, percent=0.0):
+        if descript is None:
+            descript = []
         self.name = name
         self.score = score
         self.descript = descript
@@ -80,10 +82,10 @@ def sorting(house1, house2, house3, house4):  # Sorts you into your correct hous
 
         else:
             print("You tied two for two or more houses. Choose Which House you wish to belong to!")
-            print("Gryffindor: {:.2f}%".format(house1/(house1 + house2 + house3 + house4)*100))
-            print("Slytherin:  {:.2f}%".format(house2/(house1 + house2 + house3 + house4)*100))
-            print("Ravenclaw:  {:.2f}%".format(house3/(house1 + house2 + house3 + house4)*100))
-            print("Hufflepuff: {:.2f}%".format(house4/(house1 + house2 + house3 + house4)*100))
+            print("Gryffindor: {:.2f}%".format(house1 / (house1 + house2 + house3 + house4) * 100))
+            print("Slytherin:  {:.2f}%".format(house2 / (house1 + house2 + house3 + house4) * 100))
+            print("Ravenclaw:  {:.2f}%".format(house3 / (house1 + house2 + house3 + house4) * 100))
+            print("Hufflepuff: {:.2f}%".format(house4 / (house1 + house2 + house3 + house4) * 100))
 
             answer = question()
 
@@ -99,10 +101,10 @@ def sorting(house1, house2, house3, house4):  # Sorts you into your correct hous
 
 def main():
     # Creates each house
-    gryffindor = House("Gryffindor", 0, houseDescList[0])
-    slytherin = House("Slytherin", 0, houseDescList[1])
-    ravenclaw = House("Ravenclaw", 0, houseDescList[2])
-    hufflepuff = House("Hufflepuff", 0, houseDescList[3])
+    gryffindor = House("Gryffindor", 0, houseDescList[0:7])
+    slytherin = House("Slytherin", 0, houseDescList[9:17])
+    ravenclaw = House("Ravenclaw", 0, houseDescList[19:26])
+    hufflepuff = House("Hufflepuff", 0, houseDescList[28:38])
 
     for i in intro:  # prints intro
         print(i)
@@ -140,16 +142,20 @@ def main():
 
         else:
             if result == 0:
-                print("You were sorted into {}!".format(gryffindor.name), "\n", gryffindor.descript, sep="")
+                print("You were sorted into {}!".format(gryffindor.name), "\n")
+                print(*gryffindor.descript, sep="\n")
                 break
             elif result == 1:
-                print("You were sorted into {}!".format(slytherin.name), "\n", slytherin.descript, sep="")
+                print("You were sorted into {}!".format(slytherin.name), "\n")
+                print(*slytherin.descript, sep="\n")
                 break
             elif result == 2:
-                print("You were sorted into {}!".format(ravenclaw.name), "\n", ravenclaw.descript, sep="")
+                print("You were sorted into {}!".format(ravenclaw.name), "\n")
+                print(*ravenclaw.descript, sep="\n")
                 break
             else:
-                print("You were sorted into {}!".format(hufflepuff.name), "\n", hufflepuff.descript, sep="")
+                print("You were sorted into {}!".format(hufflepuff.name), "\n")
+                print(*hufflepuff.descript, sep="\n")
                 break
 
     totalScore = gryffindor.score + slytherin.score + ravenclaw.score + hufflepuff.score
@@ -159,6 +165,7 @@ def main():
     ravenclaw.percent = ravenclaw.score / totalScore * 100
     hufflepuff.percent = hufflepuff.score / totalScore * 100
 
+    print("\nFinal Results:")
     print(gryffindor.name, "{:.2f}%".format(gryffindor.percent))
     print(slytherin.name, "{:.2f}%".format(slytherin.percent))
     print(ravenclaw.name, "{:.2f}%".format(ravenclaw.percent))
