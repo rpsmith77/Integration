@@ -1,8 +1,11 @@
 Welcome to Hogwarts Witches and Wizards!
 
-Our Sorting Hat is currently on holiday visiting his cousin at Ilvermorny. Never fear though! We asked our Muggle studies Professor to make something to work til the Sorting Hat gets back. He used something called Python to make this. He described it as different language that talks to computers. This Sorting hat quiz is very simple to use. Even a troll can do it!
+Our Sorting Hat is currently on holiday visiting his cousin at Ilvermorny. Never fear though!
+We asked our Muggle studies Professor to make something to work til the Sorting Hat gets back.
+He used something called Python to make this. He described it as different language that talks to computers.
+This Sorting hat quiz is very simple to use. Even a troll can do it!
 
-          Instructions
+Instructions
 * Answer each question with the corresponding number.
    * A, B, C, and D will also work
 * Don't try and break the computer
