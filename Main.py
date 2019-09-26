@@ -15,6 +15,8 @@ houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
 intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
 
 
+# Cite: http://www.newthinktank.com/2016/07/learn-program-9/
+# # Taught me how to use classes
 class House:
 
     def __init__(self, name="", score=0, descript=None, percent=0.0):
@@ -131,6 +133,7 @@ def main():
             print()
 
     while True:
+
         result = house.sorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
 
         if result > 4:  # If it was tied this adds to the house's score
