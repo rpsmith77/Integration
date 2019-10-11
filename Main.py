@@ -2,25 +2,14 @@
 
 # Harry Potter Sorting Hat Quiz
 
-
-# Takes questions from external .txt file and stores it in a list
-# Cite: https://qiita.com/visualskyrim/items/1922429a07ca5f974467
-# # That url showed me how to import the .txt file without \n at the end  of each line
-questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
-
-# The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
-houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
-
-# Contains Intro and Instructions
-intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
-
-
 # Cite: http://www.newthinktank.com/2016/07/learn-program-9/
 # # Taught me how to use classes
+
+
 class House:
 
-    def __init__(self, name="", score=0, descript=None, percent=0.0):
-        if descript is None:
+    def __init__(self, name="", score=0, descript=None, percent=0.0):  # function that creates each house
+        if descript is None:  #
             descript = []
         self.name = name
         self.score = score
@@ -33,9 +22,9 @@ class House:
     def quiz():
         # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
         # # This tutorial taught me how to use a while loop to check for proper input
+
         while True:  # Makes sure input is valid
             try:
-
                 ans = input()
 
                 if len(ans) != 1:  # Checks if input is multiple characters. If so it is rejected
@@ -85,10 +74,10 @@ class House:
             else:
                 print("You tied two for two or more houses. Choose Which House you wish to belong to!"
                       "\n1. Gryffindor\n2. Slytherin\n3. Ravenclaw\n4. Hufflepuff")
-                print("Gryffindor: {:.2f}%".format(house1 / (house1 + house2 + house3 + house4) * 100))
-                print("Slytherin:  {:.2f}%".format(house2 / (house1 + house2 + house3 + house4) * 100))
-                print("Ravenclaw:  {:.2f}%".format(house3 / (house1 + house2 + house3 + house4) * 100))
-                print("Hufflepuff: {:.2f}%".format(house4 / (house1 + house2 + house3 + house4) * 100))
+                print("Gryffindor: {:.2f}%".format(percentage(house1, house2, house3, house4)))
+                print("Slytherin:  {:.2f}%".format(percentage(house2, house1, house3, house4)))
+                print("Ravenclaw:  {:.2f}%".format(percentage(house3, house2, house1, house4)))
+                print("Hufflepuff: {:.2f}%".format(percentage(house4, house2, house3, house1)))
 
                 answer = house.quiz()
 
@@ -102,9 +91,24 @@ class House:
                     return 8
 
 
+def percentage(h1, h2, h3, h4):
+    return (h1 / (h1 + h2 + h3 + h4)) * 100
+
+
 def main():
+    # Takes questions from external .txt file and stores it in a list
+    # Cite: https://qiita.com/visualskyrim/items/1922429a07ca5f974467
+    # # That url showed me how to import the .txt file without \n at the end  of each line
+    questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
+
+    # The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
+    houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
+
+    # Contains Intro and Instructions
+    intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
+
     # Creates each house
-    gryffindor = House("Gryffindor", 0, houseDescList[0:7])
+    gryffindor = House("Gryffindor", 0, houseDescList[0:8])
     slytherin = House("Slytherin", 0, houseDescList[9:17])
     ravenclaw = House("Ravenclaw", 0, houseDescList[19:26])
     hufflepuff = House("Hufflepuff", 0, houseDescList[28:38])
@@ -149,7 +153,7 @@ def main():
         else:
             if result == 0:
                 print("You were sorted into {}!".format(gryffindor.name), "\n")
-                print(*gryffindor.descript, sep="\n")
+                print(*gryffindor.descript, sep="\n")  # * operator prints every item in the list
                 break
             elif result == 1:
                 print("You were sorted into {}!".format(slytherin.name), "\n")
@@ -164,12 +168,10 @@ def main():
                 print(*hufflepuff.descript, sep="\n")
                 break
 
-    totalScore = gryffindor.score + slytherin.score + ravenclaw.score + hufflepuff.score
-
-    gryffindor.percent = gryffindor.score / totalScore * 100
-    slytherin.percent = slytherin.score / totalScore * 100
-    ravenclaw.percent = ravenclaw.score / totalScore * 100
-    hufflepuff.percent = hufflepuff.score / totalScore * 100
+    gryffindor.percent = percentage(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
+    slytherin.percent = percentage(slytherin.score, gryffindor.score, ravenclaw.score, hufflepuff.score)
+    ravenclaw.percent = percentage(ravenclaw.score, slytherin.score, gryffindor.score, hufflepuff.score)
+    hufflepuff.percent = percentage(hufflepuff.score, slytherin.score, ravenclaw.score, gryffindor.score)
 
     print("\nFinal Results:")
     print(gryffindor.name, "{:.2f}%".format(gryffindor.percent))
