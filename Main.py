@@ -9,7 +9,7 @@
 class House:
 
     def __init__(self, name="", score=0, descript=None, percent=0.0):  # function that creates each house
-        if descript is None:  #
+        if descript is None:  
             descript = []
         self.name = name
         self.score = score
@@ -74,12 +74,12 @@ class House:
             else:
                 print("You tied two for two or more houses. Choose Which House you wish to belong to!"
                       "\n1. Gryffindor\n2. Slytherin\n3. Ravenclaw\n4. Hufflepuff")
-                print("Gryffindor: {:.2f}%".format(percentage(house1, house2, house3, house4)))
-                print("Slytherin:  {:.2f}%".format(percentage(house2, house1, house3, house4)))
-                print("Ravenclaw:  {:.2f}%".format(percentage(house3, house2, house1, house4)))
-                print("Hufflepuff: {:.2f}%".format(percentage(house4, house2, house3, house1)))
+                print("Gryffindor: {:.2f}%".format(findPercentage(house1, house2, house3, house4)))
+                print("Slytherin:  {:.2f}%".format(findPercentage(house2, house1, house3, house4)))
+                print("Ravenclaw:  {:.2f}%".format(findPercentage(house3, house2, house1, house4)))
+                print("Hufflepuff: {:.2f}%".format(findPercentage(house4, house2, house3, house1)))
 
-                answer = house.quiz()
+                answer = house.runQuiz()
 
                 if answer == 1:
                     return 5
