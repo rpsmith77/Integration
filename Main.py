@@ -19,7 +19,7 @@ class House:
     # cite: http://www.newthinktank.com/2016/07/learn-program-5/
     # # This tutorial taught me how to use functions in python
     @staticmethod
-    def quiz():
+    def runQuiz():
         # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
         # # This tutorial taught me how to use a while loop to check for proper input
 
@@ -53,7 +53,7 @@ class House:
                 print("Invalid Input. Try Again.")
 
     @staticmethod
-    def sorting(house1, house2, house3, house4):  # Sorts you into your correct house
+    def doSorting(house1, house2, house3, house4):  # Sorts you into your correct house
         house = House()
         checkUnsort = [house1, house2, house3, house4]
         checkSort = sorted(checkUnsort, reverse=True)
@@ -91,7 +91,7 @@ class House:
                     return 8
 
 
-def percentage(h1, h2, h3, h4):
+def findPercentage(h1, h2, h3, h4):
     return (h1 / (h1 + h2 + h3 + h4)) * 100
 
 
@@ -123,7 +123,7 @@ def main():
     for i in range(0, len(questionList)):  # Prints out the question and answer options before
         print(questionList[i])
         if i % 5 == 0 and i != 0:
-            answer = house.quiz()
+            answer = house.runQuiz()
 
             if answer == 1:
                 gryffindor.score += 1
@@ -138,7 +138,7 @@ def main():
 
     while True:
 
-        result = house.sorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
+        result = house.doSorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
 
         if result > 4:  # If it was tied this adds to the house's score
             if result == 5:
@@ -168,10 +168,10 @@ def main():
                 print(*hufflepuff.descript, sep="\n")
                 break
 
-    gryffindor.percent = percentage(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
-    slytherin.percent = percentage(slytherin.score, gryffindor.score, ravenclaw.score, hufflepuff.score)
-    ravenclaw.percent = percentage(ravenclaw.score, slytherin.score, gryffindor.score, hufflepuff.score)
-    hufflepuff.percent = percentage(hufflepuff.score, slytherin.score, ravenclaw.score, gryffindor.score)
+    gryffindor.percent = findPercentage(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
+    slytherin.percent = findPercentage(slytherin.score, gryffindor.score, ravenclaw.score, hufflepuff.score)
+    ravenclaw.percent = findPercentage(ravenclaw.score, slytherin.score, gryffindor.score, hufflepuff.score)
+    hufflepuff.percent = findPercentage(hufflepuff.score, slytherin.score, ravenclaw.score, gryffindor.score)
 
     print("\nFinal Results:")
     print(gryffindor.name, "{:.2f}%".format(gryffindor.percent))
