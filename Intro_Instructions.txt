@@ -9,6 +9,6 @@ This Sorting hat quiz is very simple to use. Even a troll can do it!
 
 * Answer each question with the corresponding number.
    * A, B, C, and D will also work
-* Don't try and break the computer
+* Don't break the computer
 * That is seriously it.
 * Have Fun!
