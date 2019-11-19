@@ -1,5 +1,7 @@
-# Ryan Smith
-# Harry Potter Sorting Hat Quiz
+""" Harry Potter Sorting Hat Quiz by Ryan Smith.
+    This project is for my class COP 1500 Intro to Computer Science.
+    The purpose of this project is to have a demonstration of the knowledge
+    I accumulated during this semester."""
 
 # Cite: http://www.newthinktank.com/2016/07/learn-program-9/
 # # Taught me how to use classes
@@ -62,7 +64,7 @@ class House:
             if sortedResults[0] != sortedResults[1]:  # Checks if there is a tie
 
                 if unsortedResults[0] == sortedResults[0]:  # comparing sorted to unsorted to tell which house to
-                    return 0                                         # sort user in
+                    return 0  # sort user in
                 elif unsortedResults[1] == sortedResults[0]:
                     return 1
                 elif unsortedResults[2] == sortedResults[0]:
@@ -180,7 +182,5 @@ def main():
     print(ravenclaw.name, "{:.2f}%".format(ravenclaw.percent))
     print(hufflepuff.name, "{:.2f}%".format(hufflepuff.percent))
 
-    return gryffindor.percent, slytherin.percent, ravenclaw.percent, hufflepuff.percent
 
-
-# main()
+main()
