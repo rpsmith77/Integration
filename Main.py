@@ -3,13 +3,14 @@
     The purpose of this project is to have a demonstration of the knowledge
     I accumulated during this semester."""
 
+
 # Cite: http://www.newthinktank.com/2016/07/learn-program-9/
 # # Taught me how to use classes
 
 
 class House:
 
-    def __init__(self, name="", score=0, descript=None, percent=0.0):  # function that creates each house
+    def __init__(self, name="", score=0, descript=None, percent=0.0):  # creates each house
         if descript is None:
             descript = []
         self.name = name
@@ -28,16 +29,15 @@ class House:
             try:
                 userInput = input()
 
-                if len(userInput) != 1:  # Checks if input is multiple characters. If so it is rejected
+                if len(userInput) != 1:  # if input is multiple characters it is rejected
                     print("Invalid Input. Try Again.")
                     continue
-
-                elif (65 <= ord(userInput) <= 68) or (97 <= ord(userInput) <= 100):  # checks if 'A' - 'D' or 'a' - 'd'
-                    if userInput == "A" or userInput == "a":
+                elif ('a' <= userInput <= 'd') or ('A' <= userInput <= 'D'):
+                    if userInput in ('A', 'a'):
                         return 1
-                    elif userInput == "B" or userInput == "b":
+                    elif userInput in ('B', 'b'):
                         return 2
-                    elif userInput == "C" or userInput == "c":
+                    elif userInput in ('C', 'c'):
                         return 3
                     else:
                         return 4
