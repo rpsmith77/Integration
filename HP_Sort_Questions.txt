@@ -34,13 +34,38 @@ Which of the following do you have the most trouble dealing with?
    2. Being ignored
    3. Boredom
    4. Loneliness
-?
-   1.
-   2.
-   3.
-   4.
-?
-   1.
-   2.
-   3.
-   4.
+If you could have a superpower, which would you choose?
+   1. Super strength
+   2. Invisibility
+   3. Read minds
+   4. Talk to animals
+Which of the following would you most like to study?
+   1. Trolls
+   2. Vampires
+   3. Ghosts
+   4. Centaurs
+Which subject at Hogwarts would you be most interested in studying?
+   1. Defense against the Dark Arts
+   2. Potions
+   3. Transfiguration
+   4. Care of Magical Creatures
+Which path do you take?
+   1. A twisting leafy path through the woods
+   2. A dark, lantern-lit alley
+   3. A cobblestone street lined with ancient buildings
+   4. A wide, sunny, grassy path
+Which nightmare would scare you most?
+   1. Being caught high up with no hand holds
+   2. Being forced to talk in a funny voice so that everyone laughs at you
+   3. Being trapped in a dark room with an eye peering at you through the key hole
+   4. None of your friends and family know who you are
+You’re walking down the street late at night and hear a cry. What do you do?
+   1. Draw your wand and make haste towards the sound, someone could be in danger
+   2. Withdraw into the shadows, review offensive and defensive spells that might be useful
+   3. Draw your wand and try to discover the source
+   4. Proceed with caution, hand resting on still hidden wand
+A Muggle approaches you and says you’re a wizard. How do you react?
+   1. Agree and walk away, bluffing
+   2. Agree and offer them a sample of a jinx
+   3. Express your concern and offer to call a mental hospital
+   4. Ask them why they think so
