@@ -1,7 +1,8 @@
 """ Harry Potter Sorting Hat Quiz by Ryan Smith.
     This project is for my class COP 1500 Intro to Computer Science.
     The purpose of this project is to have a demonstration of the knowledge
-    I accumulated during this semester."""
+    I accumulated during this semester.
+    __author__ = Ryan Smith """
 
 
 # Cite: http://www.newthinktank.com/2016/07/learn-program-9/
@@ -9,8 +10,28 @@
 
 
 class House:
+    """
+    This class creates each house the user can be sorted into
 
-    def __init__(self, name="", score=0, descript=None, percent=0.0):  # creates each house
+    Attributes:
+        name (str): house name
+        score (int): user's score
+        descript (lis): description of the house
+        percent (float): user's percentage of answers corresponding with
+                         this house
+    """
+
+    def __init__(self, name="", score=0, descript=None, percent=0.0):
+        """
+        The constructor for the class House
+
+        :param name: house name
+        :param score: user's score
+        :param descript: description of the house
+        :param percent: user's percentage of answers corresponding with
+                        this house
+        """
+
         if descript is None:
             descript = []
         self.name = name
@@ -18,115 +39,159 @@ class House:
         self.descript = descript
         self.percent = percent
 
-    # cite: http://www.newthinktank.com/2016/07/learn-program-5/
-    # # This tutorial taught me how to use functions in python
+    # Cite: http://www.newthinktank.com/2016/07/learn-program-5/
+    # This tutorial taught me how to use functions in python
+
     @staticmethod
-    def runQuiz():
-        # Cite: http://www.newthinktank.com/2016/06/learn-program-3/
-        # # This tutorial taught me how to use a while loop to check for proper input
+    def run_quiz():
 
-        while True:  # Makes sure input is valid
+        """
+        Asks the quiz questions and interpret user input
+
+        :return: integer associated with a specific hose
+        """
+
+        # Cite: http://www.newthinktank.com/2016/06/learn-program-3/ # This
+        # tutorial taught me how to use a while loop to check for proper input
+
+        while True:  # Loop checking for valid input
             try:
-                userInput = input()
+                user_input = input()
 
-                if len(userInput) != 1:  # if input is multiple characters it is rejected
+                if len(user_input) != 1:
                     print("Invalid Input. Try Again.")
                     continue
-                elif ('a' <= userInput <= 'd') or ('A' <= userInput <= 'D'):
-                    if userInput in ('A', 'a'):
+                elif ('a' <= user_input <= 'd') or ('A' <= user_input <= 'D'):
+                    if user_input in ('A', 'a'):
                         return 1
-                    elif userInput in ('B', 'b'):
+                    elif user_input in ('B', 'b'):
                         return 2
-                    elif userInput in ('C', 'c'):
+                    elif user_input in ('C', 'c'):
                         return 3
                     else:
                         return 4
 
-                userInput = int(userInput)
+                user_input = int(user_input)
 
-                if userInput > 4 or userInput < 1:  # Checks for proper input
+                if user_input > 4 or user_input < 1:
                     print("Invalid Input. Try Again.")
                     continue
 
-                return userInput
+                return user_input
 
             except ValueError:
                 print("Invalid Input. Try Again.")
 
     @staticmethod
-    def doSorting(house1, house2, house3, house4):  # Sorts you into your correct house
+    def do_sorting(gryffindor_score, slytherin_score, ravenclaw_score,
+                   hufflepuff_house):
+        """
+        Sort user into correct house
+
+        :param gryffindor_score: # of time user answered gryffindor
+        :param slytherin_score: # of time user answered slytherin
+        :param ravenclaw_score: # of time user answered ravenclaw
+        :param hufflepuff_house: # of time user answered hufflepuff
+        :return: result of quiz
+        """
         house = House()
-        unsortedResults = [house1, house2, house3, house4]
-        sortedResults = sorted(unsortedResults, reverse=True)
+        unsorted_results = [gryffindor_score, slytherin_score, ravenclaw_score,
+                            hufflepuff_house]
+        sorted_results = sorted(unsorted_results, reverse=True)
 
         while True:
 
-            if sortedResults[0] != sortedResults[1]:  # Checks if there is a tie
+            if sorted_results[0] != sorted_results[1]:
 
-                if unsortedResults[0] == sortedResults[0]:  # comparing sorted to unsorted to tell which house to
-                    return 0  # sort user in
-                elif unsortedResults[1] == sortedResults[0]:
+                if unsorted_results[0] == sorted_results[0]:
+                    return 0
+                elif unsorted_results[1] == sorted_results[0]:
                     return 1
-                elif unsortedResults[2] == sortedResults[0]:
+                elif unsorted_results[2] == sorted_results[0]:
                     return 2
                 else:
                     return 3
 
             else:
-                print("You tied two for two or more houses. Choose Which House you wish to belong to!"
-                      "\n1. Gryffindor\n2. Slytherin\n3. Ravenclaw\n4. Hufflepuff")
-                print("Gryffindor: {:.2f}%".format(findPercentage(house1, house2, house3, house4)))
-                print("Slytherin:  {:.2f}%".format(findPercentage(house2, house1, house3, house4)))
-                print("Ravenclaw:  {:.2f}%".format(findPercentage(house3, house2, house1, house4)))
-                print("Hufflepuff: {:.2f}%".format(findPercentage(house4, house2, house3, house1)))
+                print("You tied two for two or more houses. Choose Which "
+                      "House you wish to belong to! "
+                      "\n1. Gryffindor\n2. Slytherin\n3. Ravenclaw\n4. "
+                      "Hufflepuff")
+                print("Gryffindor: {:.2f}%".format
+                      (find_percentage(gryffindor_score, slytherin_score,
+                                       ravenclaw_score, hufflepuff_house)))
+                print("Slytherin:  {:.2f}%".format
+                      (find_percentage(slytherin_score, gryffindor_score,
+                                       ravenclaw_score, hufflepuff_house)))
+                print("Ravenclaw:  {:.2f}%".format
+                      (find_percentage(ravenclaw_score, slytherin_score,
+                                       gryffindor_score, hufflepuff_house)))
+                print("Hufflepuff: {:.2f}%".format
+                      (find_percentage(hufflepuff_house, slytherin_score,
+                                       ravenclaw_score, gryffindor_score)))
 
-                tiebreakerInput = house.runQuiz()
+                tiebreaker_input = house.run_quiz()
 
-                if tiebreakerInput == 1:
+                if tiebreaker_input == 1:
                     return 5
-                elif tiebreakerInput == 2:
+                elif tiebreaker_input == 2:
                     return 6
-                elif tiebreakerInput == 3:
+                elif tiebreaker_input == 3:
                     return 7
                 else:
                     return 8
 
 
-def findPercentage(h1, h2, h3, h4):
-    return (h1 / (h1 + h2 + h3 + h4)) * 100
+def find_percentage(house_1, house_2, house_3, house_4):
+    """
+    Calculates each house's percentage.
+    :param house_1: The house whose percentage is being calculated
+    :param house_2: used to calculate percentage
+    :param house_3: used to calculate percentage
+    :param house_4: used to calculate percentage
+    :return: house_1's percentage
+    """
+    return (house_1 / (house_1 + house_2 + house_3 + house_4)) * 100
 
 
 def main():
+    """
+    The main function that runs the program
+    """
     # Takes questions from external .txt file and stores it in a list
-    # Cite: https://qiita.com/visualskyrim/items/1922429a07ca5f974467
-    # # That url showed me how to import the .txt file without \n at the end  of each line
-    questionList = [line.rstrip('\n') for line in open("HP_Sort_Questions.txt")]
+    # Cite:https://qiita.com/visualskyrim/items/1922429a07ca5f974467
+    # That url showed me how to import the .txt file without \n at the end
+    # of each line
+    quiz_questions = [line.rstrip('\n') for line in
+                      open("HP_Sort_Questions.txt")]
 
-    # The house descriptions were take from https://harrypotter.fandom.com/wiki/Hogwarts_Houses
-    houseDescList = [line.rstrip('\n') for line in open("House_Desc.txt")]
+    # The house descriptions were take from
+    # https://harrypotter.fandom.com/wiki/Hogwarts_Houses
+    house_descriptions = [line.rstrip('\n') for line in open("House_Desc.txt")]
 
     # Contains Intro and Instructions
     intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
 
     # Creates each house
-    gryffindor = House("Gryffindor", 0, houseDescList[0:8])
-    slytherin = House("Slytherin", 0, houseDescList[9:17])
-    ravenclaw = House("Ravenclaw", 0, houseDescList[19:26])
-    hufflepuff = House("Hufflepuff", 0, houseDescList[28:38])
+    gryffindor = House("Gryffindor", 0, house_descriptions[0:8])
+    slytherin = House("Slytherin", 0, house_descriptions[9:17])
+    ravenclaw = House("Ravenclaw", 0, house_descriptions[19:26])
+    hufflepuff = House("Hufflepuff", 0, house_descriptions[28:38])
 
     house = House()
 
-    sortLoop = True
+    sort_loop = True
 
     for i in intro:  # prints intro
         print(i)
 
     print()  # Formatting
 
-    for i in range(0, len(questionList)):  # Prints out the question and answer options before
-        print(questionList[i])
+    for i in range(0, len(quiz_questions)):  # Prints out the question and
+        # answer options before
+        print(quiz_questions[i])
         if i % 5 == 0 and i != 0:
-            answer = house.runQuiz()
+            answer = house.run_quiz()
 
             if answer == 1:
                 gryffindor.score += 1
@@ -139,42 +204,47 @@ def main():
 
             print()
 
-    while sortLoop:
+    while sort_loop:
 
-        sortResults = house.doSorting(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
+        sort_results = house.do_sorting(gryffindor.score, slytherin.score,
+                                        ravenclaw.score, hufflepuff.score)
 
-        if sortResults > 4:  # If it was tied this adds to the house's score
-            if sortResults == 5:
+        if sort_results > 4:  # If it was tied this adds to the house's score
+            if sort_results == 5:
                 gryffindor.score += 1
-            elif sortResults == 6:
+            elif sort_results == 6:
                 slytherin.score += 1
-            elif sortResults == 7:
+            elif sort_results == 7:
                 ravenclaw.score += 1
             else:
                 hufflepuff.score += 1
 
         else:
-            if sortResults == 0:
+            if sort_results == 0:
                 print("You were sorted into {}!".format(gryffindor.name), "\n")
-                print(*gryffindor.descript, sep="\n")  # * operator prints every item in the list
-                sortLoop = False
-            elif sortResults == 1:
+                print(*gryffindor.descript, sep="\n")  # * operator prints
+                sort_loop = False
+            elif sort_results == 1:
                 print("You were sorted into {}!".format(slytherin.name), "\n")
                 print(*slytherin.descript, sep="\n")
-                sortLoop = False
-            elif sortResults == 2:
+                sort_loop = False
+            elif sort_results == 2:
                 print("You were sorted into {}!".format(ravenclaw.name), "\n")
                 print(*ravenclaw.descript, sep="\n")
-                sortLoop = False
+                sort_loop = False
             else:
                 print("You were sorted into {}!".format(hufflepuff.name), "\n")
                 print(*hufflepuff.descript, sep="\n")
-                sortLoop = False
+                sort_loop = False
 
-    gryffindor.percent = findPercentage(gryffindor.score, slytherin.score, ravenclaw.score, hufflepuff.score)
-    slytherin.percent = findPercentage(slytherin.score, gryffindor.score, ravenclaw.score, hufflepuff.score)
-    ravenclaw.percent = findPercentage(ravenclaw.score, slytherin.score, gryffindor.score, hufflepuff.score)
-    hufflepuff.percent = findPercentage(hufflepuff.score, slytherin.score, ravenclaw.score, gryffindor.score)
+    gryffindor.percent = find_percentage(gryffindor.score, slytherin.score,
+                                         ravenclaw.score, hufflepuff.score)
+    slytherin.percent = find_percentage(slytherin.score, gryffindor.score,
+                                        ravenclaw.score, hufflepuff.score)
+    ravenclaw.percent = find_percentage(ravenclaw.score, slytherin.score,
+                                        gryffindor.score, hufflepuff.score)
+    hufflepuff.percent = find_percentage(hufflepuff.score, slytherin.score,
+                                         ravenclaw.score, gryffindor.score)
 
     print("\nFinal Results:")
     print(gryffindor.name, "{:.2f}%".format(gryffindor.percent))
