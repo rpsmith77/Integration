@@ -179,7 +179,7 @@ def main():
     # Contains Intro and Instructions
     intro = [line.rstrip('\n') for line in open("Intro_Instructions.txt")]
 
-    # Creates each house
+    # attach correct description to each corresponding house
     gryffindor = House("Gryffindor", 0, house_descriptions[0:8])
     slytherin = House("Slytherin", 0, house_descriptions[9:17])
     ravenclaw = House("Ravenclaw", 0, house_descriptions[19:26])
