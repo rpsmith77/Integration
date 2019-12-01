@@ -6,7 +6,7 @@
     Sources: Descriptions of each House Source:
                     https://harrypotter.fandom.com/wiki/Hogwarts_Houses
 
-             Quiz questions: Taken from the offical Harry Potter Sorting Hat
+             Quiz questions: Taken from the official Harry Potter Sorting Hat
                              Quiz on Pottermore.com (Site now down)
 
     __author__ = Ryan Smith """
