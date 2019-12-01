@@ -2,6 +2,13 @@
     This project is for my class COP 1500 Intro to Computer Science.
     The purpose of this project is to have a demonstration of the knowledge
     I accumulated during this semester.
+
+    Sources: Descriptions of each House Source:
+                    https://harrypotter.fandom.com/wiki/Hogwarts_Houses
+
+             Quiz questions: Taken from the offical Harry Potter Sorting Hat
+                             Quiz on Pottermore.com (Site now down)
+
     __author__ = Ryan Smith """
 
 
