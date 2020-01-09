@@ -55,7 +55,7 @@ class House:
         """
         Asks the quiz questions and interpret user input
 
-        :return: integer associated with a specific hose
+        :return: integer associated with a specific house
         """
 
         # Cite: http://www.newthinktank.com/2016/06/learn-program-3/ # This
@@ -91,19 +91,19 @@ class House:
 
     @staticmethod
     def do_sorting(gryffindor_score, slytherin_score, ravenclaw_score,
-                   hufflepuff_house):
+                   hufflepuff_score):
         """
         Sort user into correct house
 
         :param gryffindor_score: # of time user answered gryffindor
         :param slytherin_score: # of time user answered slytherin
         :param ravenclaw_score: # of time user answered ravenclaw
-        :param hufflepuff_house: # of time user answered hufflepuff
+        :param hufflepuff_score: # of time user answered hufflepuff
         :return: result of quiz
         """
         house = House()
         unsorted_results = [gryffindor_score, slytherin_score, ravenclaw_score,
-                            hufflepuff_house]
+                            hufflepuff_score]
         sorted_results = sorted(unsorted_results, reverse=True)
 
         while True:
@@ -126,15 +126,15 @@ class House:
                       "Hufflepuff")
                 print("Gryffindor: {:.2f}%".format
                       (find_percentage(gryffindor_score, slytherin_score,
-                                       ravenclaw_score, hufflepuff_house)))
+                                       ravenclaw_score, hufflepuff_score)))
                 print("Slytherin:  {:.2f}%".format
                       (find_percentage(slytherin_score, gryffindor_score,
-                                       ravenclaw_score, hufflepuff_house)))
+                                       ravenclaw_score, hufflepuff_score)))
                 print("Ravenclaw:  {:.2f}%".format
                       (find_percentage(ravenclaw_score, slytherin_score,
-                                       gryffindor_score, hufflepuff_house)))
+                                       gryffindor_score, hufflepuff_score)))
                 print("Hufflepuff: {:.2f}%".format
-                      (find_percentage(hufflepuff_house, slytherin_score,
+                      (find_percentage(hufflepuff_score, slytherin_score,
                                        ravenclaw_score, gryffindor_score)))
 
                 tiebreaker_input = house.run_quiz()
